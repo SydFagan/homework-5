@@ -1,0 +1,43 @@
+<section class="section container">
+  <div class="split" style="grid-template-columns:1fr 1fr">
+    <div class="copy">
+      <h2>Login here!</h2>
+      <form id="login-form">
+        <label>Email Address:<br/><input name="username" type="email" required style="width:100%;border:none;border-bottom:1px solid #222;height:34px"></label><br/><br/>
+        <label>Password:<br/><input name="password" type="password" required style="width:100%;border:none;border-bottom:1px solid #222;height:34px"></label><br/><br/>
+        <button class="btn" type="submit" style="background:var(--brand-600)">LOGIN</button>
+        <p id="login-msg" class="msg"></p>
+      </form>
+    </div>
+    <div class="copy">
+      <p style="margin:0 0 8px;color:var(--muted)">don't have an account?</p>
+      <h2>Sign up!</h2>
+      <form id="signup">
+        <label>First Name:<br/><input type="text" required style="width:100%;border:none;border-bottom:1px solid #222;height:34px"></label><br/><br/>
+        <label>Last Name:<br/><input type="text" required style="width:100%;border:none;border-bottom:1px solid #222;height:34px"></label><br/><br/>
+        <label>Email Address:<br/><input type="email" required style="width:100%;border:none;border-bottom:1px solid #222;height:34px"></label><br/><br/>
+        <label>Password:<br/><input type="password" required style="width:100%;border:none;border-bottom:1px solid #222;height:34px"></label><br/><br/>
+        <button class="btn" type="submit">SIGN UP</button>
+      </form>
+    </div>
+  </div>
+</section>
+<script>
+  window.onViewReady = function(){
+    const form = document.getElementById('login-form');
+    const msg = document.getElementById('login-msg');
+    form.addEventListener('submit', e=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      const username = data.get('username');
+      const password = data.get('password');
+      const res = Auth.signIn(username,password);
+      if (!res.ok){ msg.textContent = res.msg; Toast.error(res.msg); return; }
+      msg.textContent = 'Signed in successfully.';
+    });
+    document.getElementById('signup').addEventListener('submit', e=>{
+      e.preventDefault();
+      Toast.success('Account created (simulated)');
+    });
+  };
+</script>

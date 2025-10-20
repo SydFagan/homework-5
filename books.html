@@ -1,0 +1,197 @@
+<section class="section container">
+  <h2>Booksets</h2>
+  <div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: 60px">
+    <article class="card">
+      <img src="assets/images/twilight-box-set.png" alt="" />
+      <p>Lorem ipsum...</p>
+      <div class="price">$99.99</div>
+      <button
+        class="btn-outline add"
+        data-id="s1"
+        data-title="Twilight Box Set"
+        data-price="99.99"
+      >
+        ADD TO CART
+      </button>
+    </article>
+
+    <article class="card">
+      <img src="assets/images/got-box-set.png" alt="" />
+      <p>Lorem ipsum...</p>
+      <div class="price">$100.00</div>
+      <button
+        class="btn-outline add"
+        data-id="s2"
+        data-title="Game of Thrones Box Set"
+        data-price="100.00"
+      >
+        ADD TO CART
+      </button>
+    </article>
+
+    <article class="card">
+      <img src="assets/images/hp-box-set.png" alt="" />
+      <p>Lorem ipsum...</p>
+      <div class="price">$100.00</div>
+      <button
+        class="btn-outline add"
+        data-id="s3"
+        data-title="Harry Potter Trunk"
+        data-price="100.00"
+      >
+        ADD TO CART
+      </button>
+    </article>
+  </div>
+</section>
+
+<section class="section container">
+  <h2>Black History Books</h2>
+  <div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: 60px">
+    <article class="card">
+      <img src="assets/images/finding-me.png" alt="" />
+      <p>Lorem ipsum...</p>
+      <div class="price">$27.99</div>
+      <button
+        class="btn-outline add"
+        data-id="bh1"
+        data-title="Becoming By Michelle Obama"
+        data-price="27.99"
+      >
+        ADD TO CART
+      </button>
+    </article>
+
+    <article class="card">
+      <img src="assets/images/mlk-biography.png" alt="" />
+      <p>Lorem ipsum...</p>
+      <div class="price">$19.99</div>
+      <button
+        class="btn-outline add"
+        data-id="bh2"
+        data-title="Autobiography of MLK"
+        data-price="19.99"
+      >
+        ADD TO CART
+      </button>
+    </article>
+
+    <article class="card">
+      <img src="assets/images/elenor-roosevelt-biography.png" alt="" />
+      <p>Lorem ipsum...</p>
+      <div class="price">$18.99</div>
+      <button
+        class="btn-outline add"
+        data-id="bh3"
+        data-title="Eleanor Roosevelt Autobiography"
+        data-price="18.99"
+      >
+        ADD TO CART
+      </button>
+    </article>
+  </div>
+</section>
+
+<section class="section container">
+  <h2>Horror Books</h2>
+  <div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: 60px">
+    <article class="card">
+      <img src="assets/images/misery.png" alt="" />
+      <p>Lorem ipsum...</p>
+      <div class="price">$19.99</div>
+      <button
+        class="btn-outline add"
+        data-id="h1"
+        data-title="Misery"
+        data-price="19.99"
+      >
+        ADD TO CART
+      </button>
+    </article>
+
+    <article class="card">
+      <img src="assets/images/frankenstein.png" alt="" />
+      <p>Lorem ipsum...</p>
+      <div class="price">$15.99</div>
+      <button
+        class="btn-outline add"
+        data-id="h2"
+        data-title="Frankenstein"
+        data-price="15.99"
+      >
+        ADD TO CART
+      </button>
+    </article>
+
+    <article class="card">
+      <img src="assets/images/phantoms.png" alt="" />
+      <p>Lorem ipsum...</p>
+      <div class="price">$19.99</div>
+      <button
+        class="btn-outline add"
+        data-id="h3"
+        data-title="Phantoms"
+        data-price="19.99"
+      >
+        ADD TO CART
+      </button>
+    </article>
+  </div>
+</section>
+
+<section class="section container">
+  <h2>Childrens Books</h2>
+  <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 60px">
+    <article class="card">
+      <img src="assets/images/winnie-the-pooh.png" alt="" />
+      <p>Lorem ipsum...</p>
+      <div class="price">$19.99</div>
+      <button
+        class="btn-outline add"
+        data-id="c1"
+        data-title="Winnie the Pooh"
+        data-price="19.99"
+      >
+        ADD TO CART
+      </button>
+    </article>
+    <article class="card">
+      <img src="assets/images/cat-and-the-hat.png" alt="" />
+      <p>Lorem ipsum...</p>
+      <div class="price">$15.99</div>
+      <button
+        class="btn-outline add"
+        data-id="c2"
+        data-title="The Cat in the Hat"
+        data-price="15.99"
+      >
+        ADD TO CART
+      </button>
+    </article>
+    <article class="card">
+      <img src="assets/images/fun-facts-about-space.png" alt="" />
+      <p>Lorem ipsum...</p>
+      <div class="price">$7.99</div>
+      <button
+        class="btn-outline add"
+        data-id="c3"
+        data-title="Fun Facts About Space"
+        data-price="7.99"
+      >
+        ADD TO CART
+      </button>
+    </article>
+  </div>
+</section>
+<script>
+  window.onViewReady = function () {
+    document.querySelectorAll(".add").forEach((b) =>
+      b.addEventListener("click", () => {
+        const id = b.dataset.id,
+          title = b.dataset.title,
+          price = parseFloat(b.dataset.price);
+        Cart.add({ id, title, price, qty: 1 });
+      })
+    );
+  };
+</script>

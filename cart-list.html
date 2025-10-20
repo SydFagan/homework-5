@@ -1,0 +1,31 @@
+<section class="section container">
+  <div class="cart-list" id="cart-list"></div>
+</section>
+<script>
+function renderCart(){
+  const list = document.getElementById('cart-list');
+  const items = (typeof Cart!=='undefined') ? Cart.load() : [];
+  if (!items.length){ list.innerHTML = '<p>Your cart is empty.</p>'; return; }
+  list.innerHTML = items.map(it => `
+    <div class="cart-row">
+      <img src="${(Products.find(p=>p.id===it.id)||{}).img || 'assets/images/to-kill-a-mockingbird.png'}" alt="">
+      <div>
+        <h4>${it.title}</h4>
+        <div class="price">$${it.price.toFixed(2)}</div>
+        <div class="cart-actions">
+          Qty: <input type="number" min="1" value="${it.qty}" data-qty="${it.id}" style="width:60px" />
+          <a href="#" data-delete="${it.id}">delete</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  list.querySelectorAll('[data-delete]').forEach(a => a.addEventListener('click', e=>{
+    e.preventDefault(); Cart.remove(a.dataset.delete); renderCart();
+  }));
+  list.querySelectorAll('[data-qty]').forEach(i => i.addEventListener('change', e=>{
+    Cart.updateQty(e.target.dataset.qty, parseInt(e.target.value,10)||1); renderCart();
+  }));
+}
+window.onViewReady = renderCart;
+document.addEventListener('cartChanged', renderCart);
+</script>

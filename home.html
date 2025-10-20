@@ -1,0 +1,34 @@
+<section class="hero container">
+  <div class="banner">
+    <img src="assets/images/home-hero.png" alt="Hero banner">
+    <div class="text">
+      <h2>A PLACE IS NOT A PLACE</h2>
+      <p>UNTIL IT HAS A BOOKSTORE</p>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="home-row" id="home-grid"></div>
+</section>
+
+<script>
+window.onViewReady = function(){
+  const grid = document.getElementById('home-grid');
+  const featured = (typeof Products!=='undefined' ? Products.slice(0,3) : []);
+  grid.innerHTML = featured.map(p => `
+    <article class="home-card">
+      <img src="${p.img}" alt="${p.title}">
+      <p class="blurb">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+      <div class="price">$${p.price.toFixed(2)}</div>
+      <button class="btn-ghost add" data-id="${p.id}">ADD TO CART</button>
+    </article>
+  `).join('');
+  grid.querySelectorAll('.add').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const p = Products.find(x => x.id === btn.dataset.id);
+      Cart.add({id:p.id,title:p.title,price:p.price,qty:1});
+    });
+  });
+};
+</script>
