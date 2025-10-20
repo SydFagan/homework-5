@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>The BookNook</title>
+    <base href="./" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container topbar">
+        <div class="brand">
+          <img
+            src="assets/images/books-stack-of-three.png"
+            alt="BookNook logo"
+          />
+          <div class="name">The BookNook</div>
+        </div>
+        <div class="search">
+          <img class="icon" src="assets/images/search.png" alt="search" />
+          <input placeholder="Search..." />
+        </div>
+        <nav class="main-nav">
+          <a data-link href="views/home.html" class="active">Home</a>
+          <a data-link href="views/about.html">About</a>
+          <a data-link href="views/books.html">Books</a>
+          <a data-link href="views/blog.html">Blog</a>
+          <a data-link href="views/login.html" class="icon-btn"
+            ><img src="assets/images/user.png" alt="" />Account</a
+          >
+          <a data-link href="views/cart-list.html" class="icon-btn"
+            ><img src="assets/images/shopping-cart.png" alt="" />Cart
+            <span id="cart-count">0</span></a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="container"></main>
+    <div class="toast-wrap" id="toast-wrap" aria-live="polite"></div>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>Copyright 2022, The BookNook</div>
+        <div class="footer-links">
+          <a data-link href="views/home.html">Home</a>
+          <a data-link href="views/about.html">About</a>
+          <a data-link href="views/books.html">Books</a>
+          <a data-link href="views/blog.html">Blog</a>
+        </div>
+        <div class="social">
+          <img src="assets/images/facebook_w.png" alt="Facebook" />
+          <img src="assets/images/instagram_w.png" alt="Instagram" />
+          <img src="assets/images/twitter_w.png" alt="Twitter" />
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/mvc/router.js"></script>
+    <script src="js/utils/toast.js"></script>
+    <script src="js/models/products.js"></script>
+    <script src="js/models/user.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/loader.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (!location.hash) location.hash = "views/home.html";
+      });
+    </script>
+  </body>
+</html>
